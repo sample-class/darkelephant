@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+    <h1 class="display-5 mt-4">Летим {{ mok.departures[direction] }}</h1>
+    <p class="mb-4">Найдено {{ filter_tours|length }} туров, от {{ min_max.min_price }} до {{ min_max.max_price }} и от {{ min_max.min_nights }} ночей до {{ min_max.max_nights }} ночей</p>
+    <!-- HERO -->
+
+
+
+    <!-- CARDS -->
+
+    <div class="row mt-5">
+
+        {% for key, value in filter_tours.items() %}
+        <div class="col-4">
+            <div class="card mb-3" >
+                <img src="{{ value.picture }}" class="card-img-top img-fluid">
+                <div class="card-body">
+                  <h5 class="card-title">{{ value.title }}</h5>
+                    <p class="card-text">{{ value.description|truncate(200) }}</p>
+                    <a href="/tours/{{ key }}" class="btn btn-sm btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %} 

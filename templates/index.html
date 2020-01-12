@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <!-- HERO -->
+
+    <div class="jumbotron text-center mt-4">
+      <h1 class="display-4">Всякие туры</h1>
+      <p class="lead">{{ mok.subtitile }}</p>
+      <p class="mt-5 w-50 mx-auto">{{ mok.description }}</p>
+    </div>
+
+    <!-- CARDS https://place-hold.it/300x200-->
+    
+    <div class="row mt-5">
+        {% for key, value in tours.items() %}
+        <div class="col-4">
+            <div class="card mb-3" >
+                <img src="{{ value.picture }}" class="card-img-top img-fluid">
+                <div class="card-body">
+                  <h5 class="card-title">{{ value.title }}</h5>
+                    <p class="card-text">{{ value.description|truncate(200) }}</p>
+                    <a href="/tours/{{ key }}" class="btn btn-sm btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %} 
